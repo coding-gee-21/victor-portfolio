@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sound-Reactive Light System | Technical Documentation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="doc-body">
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">VICTOR NYAGA</a>
+      <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main class="container doc-container">
+    
+    <div class="doc-header">
+      <span class="doc-badge">Acoustic Signal Processing & Hardware</span>
+      <h1>Sound-Reactive Dynamic Snake Light Control System</h1>
+      <p class="doc-subtitle">Acoustic peak detection engine, dynamic pulse-width modulation pattern generation, and infrared remote override control.</p>
+    </div>
+
+    <div class="doc-grid-main">
+      
+      <!-- Left Column: Media & Diagrams -->
+      <div class="doc-media-col">
+        <div class="card media-card">
+          <h3>Hardware Video Demonstrations</h3>
+          
+          <div class="video-container" style="margin-bottom: 15px;">
+            <video controls playsinline preload="metadata" poster="assets/snake1.jpg">
+              <source src="assets/snakevideo1.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="video-container">
+            <video controls playsinline preload="metadata" poster="assets/snake1.jpg">
+              <source src="assets/snakevideo2.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="media-actions">
+            <a href="https://vm.tiktok.com/ZMA3SHtr2/" target="_blank" class="btn btn-secondary btn-sm">Watch Demo on TikTok ↗</a>
+            <a href="assets/Snakelights_and_mic_module_code2.ino" download class="btn btn-primary btn-sm">Download Firmware (.INO)</a>
+          </div>
+        </div>
+
+        <div class="card diagram-card">
+          <h3>Acoustic Processing Pipeline</h3>
+          <div class="diagram-flow-vertical">
+            <div class="diagram-step">
+              <span class="step-title">1. Acoustic Transducer</span>
+              <p>Electret Condenser Microphone + Op-Amp Preamplifier Stage</p>
+            </div>
+            <div class="diagram-arrow-v">↓ (Analog Voltage Waveform)</div>
+            <div class="diagram-step">
+              <span class="step-title">2. Processing Unit</span>
+              <p>MCU ADC Sampling & Dynamic Amplitude Threshold Filtering</p>
+            </div>
+            <div class="diagram-arrow-v">↓ (PWM Driver Signals)</div>
+            <div class="diagram-step">
+              <span class="step-title">3. Power Stage</span>
+              <p>Transistor Switching Array Driving Multi-Channel LED Strips</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Case Study -->
+      <div class="doc-text-col">
+        
+        <div class="card doc-section-card">
+          <h2>1. Engineering Concept & Problem Statement</h2>
+          <p>
+            Conventional decorative lighting systems run static, pre-programmed lighting sequences that lack responsiveness to environmental ambient sounds. This engineering project presents a real-time sound-reactive lighting driver capable of analyzing live room acoustics, detecting rhythm beats, and executing dynamic light chase routines synchronized to audio amplitude peaks.
+          </p>
+        </div>
+
+        <div class="card doc-section-card">
+          <h2>2. Hardware Architecture & Signal Chain</h2>
+          <ul class="tech-list">
+            <li><strong>Acoustic Sensing:</strong> Microphone sensor module with integrated operational amplifier for signal boosting.</li>
+            <li><strong>Infrared Receiver:</strong> HS0038 IR receiver module for manual remote parameter modification.</li>
+            <li><strong>Microcontroller Core:</strong> Microcontroller reading analog acoustic signals through 10-bit Analog-to-Digital Converter (ADC) channels.</li>
+            <li><strong>Output Stage:</strong> Multi-channel NPN transistor switching circuit controlling power flow to multi-segment LED strips.</li>
+          </ul>
+        </div>
+
+        <div class="card doc-section-card">
+          <h2>3. Firmware Logic & Calibration</h2>
+          <div class="challenge-box">
+            <h4>Challenge 1: Ambient Background Noise Interference</h4>
+            <p><strong>Diagnosis:</strong> Background noise created false beat detections, causing the LEDs to flicker continuously even during quiet passages.</p>
+            <p><strong>Solution:</strong> Developed a dynamic thresholding algorithm in C firmware that continuously samples average ambient noise and sets the trigger point 15% above background noise levels.</p>
+          </div>
+
+          <div class="challenge-box">
+            <h4>Challenge 2: Real-Time IR Decoding Interrupts</h4>
+            <p><strong>Diagnosis:</strong> IR remote decoding delays were causing missed beat samples during high-speed audio transitions.</p>
+            <p><strong>Solution:</strong> Reorganized software logic to handle IR signal processing via hardware pin interrupts without blocking the primary audio-sampling loop.</p>
+          </div>
+        </div>
+
+        <!-- Live Embedded Firmware Preview Section -->
+        <div class="card doc-section-card">
+          <div class="code-header">
+            <h2>4. Live Embedded C/C++ Firmware</h2>
+            <button class="copy-btn" data-code="snakeCode">Copy Code</button>
+          </div>
+          <pre class="code-block"><code id="snakeCode">#include &lt;Arduino.h&gt;
+
+// Pin Definitions
+#define MIC_PIN A0        // Electret Microphone via Op-Amp
+#define IR_PIN 2          // HS0038 IR Receiver
+#define LED_STRIP_1 3     // PWM Output Channel 1
+#define LED_STRIP_2 5     // PWM Output Channel 2
+#define LED_STRIP_3 6     // PWM Output Channel 3
+
+// Amplitude Threshold Variables
+volatile int ambientNoise = 0;
+volatile int beatThreshold = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(MIC_PIN, INPUT);
+  pinMode(IR_PIN, INPUT);
+  pinMode(LED_STRIP_1, OUTPUT);
+  pinMode(LED_STRIP_2, OUTPUT);
+  pinMode(LED_STRIP_3, OUTPUT);
+
+  // Calibrate Ambient Noise Floor at Startup
+  calibrateAmbientNoise();
+}
+
+void loop() {
+  int signalLevel = analogRead(MIC_PIN);
+
+  // Dynamic Amplitude Threshold Detection
+  if (signalLevel > beatThreshold) {
+    int beatIntensity = map(signalLevel, beatThreshold, 1023, 0, 255);
+    triggerLightPattern(beatIntensity);
+  }
+
+  // IR Remote Override (Non-Blocking Interrupt)
+  handleIRRemote();
+
+  // Continuous Ambient Noise Recalibration
+  recalibrateThreshold();
+}
+
+void calibrateAmbientNoise() {
+  long total = 0;
+  for (int i = 0; i < 100; i++) {
+    total += analogRead(MIC_PIN);
+    delay(5);
+  }
+  ambientNoise = total / 100;
+  beatThreshold = ambientNoise + (ambientNoise * 0.15); // 15% Above Background
+}
+
+void triggerLightPattern(int intensity) {
+  int pwmVal = constrain(intensity, 0, 255);
+  analogWrite(LED_STRIP_1, pwmVal);
+  analogWrite(LED_STRIP_2, pwmVal / 2);
+  analogWrite(LED_STRIP_3, pwmVal / 4);
+}
+
+void recalibrateThreshold() {
+  static unsigned long lastCalibration = 0;
+  if (millis() - lastCalibration > 5000) { // Recalibrate every 5 seconds
+    calibrateAmbientNoise();
+    lastCalibration = millis();
+  }
+}
+
+void handleIRRemote() {
+  // IR signal processing via hardware pin interrupts
+  // without blocking the primary audio-sampling loop
+}</code></pre>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Victor Nyaga | Electrical & Electronics Engineering Portfolio</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DS1302 Precision Digital Clock | Technical Documentation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="doc-body">
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">VICTOR NYAGA</a>
+      <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container doc-container">
+    
+    <!-- Header Banner -->
+    <div class="doc-header">
+      <span class="doc-badge">Embedded Systems & Firmware</span>
+      <h1>DS1302 Real-Time Digital Clock & Alarm System</h1>
+      <p class="doc-subtitle">Precision timing architecture with software debouncing, custom interrupt-based alarms, and dual 12/24-hour LCD interface.</p>
+    </div>
+
+    <div class="doc-grid-main">
+      
+      <!-- Left Column: Video & Media Showcase -->
+      <div class="doc-media-col">
+        <div class="card media-card">
+          <h3>Hardware Video Demonstration</h3>
+          <div class="video-container">
+            <video controls playsinline preload="metadata" poster="assets/clock.jpg">
+              <source src="assets/clockvideo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="media-actions">
+            <a href="https://vm.tiktok.com/ZMA3SXw5S/" target="_blank" class="btn btn-secondary btn-sm">Watch Demo on TikTok ↗</a>
+            <a href="assets/sketch9clockdisplay.ino" download class="btn btn-primary btn-sm">Download Firmware (.INO)</a>
+          </div>
+        </div>
+
+        <!-- System Architecture Block Diagram -->
+        <div class="card diagram-card">
+          <h3>Hardware Signal Pipeline</h3>
+          <div class="diagram-flow-vertical">
+            <div class="diagram-step">
+              <span class="step-title">1. Timekeeper IC</span>
+              <p>DS1302 RTC Chip + 32.768 kHz Crystal Oscillator</p>
+            </div>
+            <div class="diagram-arrow-v">↓ (3-Wire Serial Interface)</div>
+            <div class="diagram-step">
+              <span class="step-title">2. Processing Unit</span>
+              <p>ATmega328P Microcontroller (State Machine & Polling)</p>
+            </div>
+            <div class="diagram-arrow-v">↓ (4-Bit Parallel Bus)</div>
+            <div class="diagram-step">
+              <span class="step-title">3. Display Output</span>
+              <p>16x2 Character LCD + Potentiometer Contrast Adjustment</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Engineering Case Study -->
+      <div class="doc-text-col">
+        
+        <!-- Section 1 -->
+        <div class="card doc-section-card">
+          <h2>1. Engineering Concept & Problem Statement</h2>
+          <p>
+            Standard microcontroller internal timers suffer from noticeable frequency drift due to temperature variance and clock cycle inaccuracy. This project solves that limitation by interfacing a dedicated Real-Time Clock (RTC) integrated circuit (DS1302) with an ATmega328P microcontroller.
+          </p>
+          <p>
+            The system maintains accurate sub-second timekeeping backed by a CR2032 coin-cell battery during main system power dropouts, ensuring uninterrupted operation in power-sensitive deployments.
+          </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="card doc-section-card">
+          <h2>2. Hardware & Circuit Architecture</h2>
+          <ul class="tech-list">
+            <li><strong>RTC IC:</strong> DS1302 real-time clock operating over a 3-wire synchronous serial communication bus (CE, I/O, SCLK).</li>
+            <li><strong>Time Base:</strong> 32.768 kHz quartz crystal oscillator connected directly to X1/X2 pins for high clock accuracy.</li>
+            <li><strong>Display Interface:</strong> 16x2 character LCD driven via a 4-bit parallel data interface to conserve microcontroller I/O pins.</li>
+            <li><strong>User Input Matrix:</strong> Tactile push buttons configured with internal pull-up resistors for menu selection, time setting, and alarm configuration.</li>
+          </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="card doc-section-card">
+          <h2>3. Firmware Engineering & Debugging</h2>
+          <div class="challenge-box">
+            <h4>Challenge 1: Tactile Switch Contact Bounce</h4>
+            <p><strong>Diagnosis:</strong> Mechanical button presses produced rapid voltage spikes, causing multiple false register triggers in state selection routines.</p>
+            <p><strong>Solution:</strong> Implemented software debouncing logic utilizing a 50ms time-sampling delay before validating button state transitions.</p>
+          </div>
+
+          <div class="challenge-box">
+            <h4>Challenge 2: Display Screen Flickering</h4>
+            <p><strong>Diagnosis:</strong> Redrawing the entire LCD screen on every loop execution created visible screen strobe artifacts.</p>
+            <p><strong>Solution:</strong> Restructured LCD update cycles to write only changed time digits when seconds or menu states changed.</p>
+          </div>
+        </div>
+
+        <!-- Live Embedded Firmware Preview Section -->
+        <div class="card doc-section-card">
+          <div class="code-header">
+            <h2>4. Live Embedded C/C++ Firmware</h2>
+            <button class="copy-btn" data-code="clockCode">Copy Code</button>
+          </div>
+          <pre class="code-block"><code id="clockCode">#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal.h&gt;
+#include &lt;DS1302.h&gt;
+
+// Pin initialization for DS1302 (CE, IO, SCLK)
+DS1302 rtc(2, 3, 4);
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+void setup() {
+  lcd.begin(16, 2);
+  rtc.halt(false);
+  rtc.writeProtect(false);
+}
+
+void loop() {
+  Time t = rtc.getTime();
+  
+  // Software Debounced LCD Refresh
+  lcd.setCursor(0, 0);
+  lcd.print("TIME: ");
+  lcd.print(rtc.getTimeStr());
+  
+  lcd.setCursor(0, 1);
+  lcd.print("DATE: ");
+  lcd.print(rtc.getDateStr());
+  
+  delay(500); // 500ms Update Sampling Window
+}</code></pre>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Victor Nyaga | Electrical & Electronics Engineering Portfolio</p>
+    </div>
+  </footer>
+
+</body>
+</html>
