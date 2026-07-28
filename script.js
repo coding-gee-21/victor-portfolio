@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 1. Motor & Cable Sizing Calculator ---
+  // --- 1. Motor & Cable Sizing Calculator (index.html only) ---
   const calcBtn = document.getElementById('calcBtn');
   if (calcBtn) {
     calcBtn.addEventListener('click', () => {
-      const kw = parseFloat(document.getElementById('motorKw').value) || 0;
-      const pf = parseFloat(document.getElementById('powerFactor').value) || 0.85;
-      const eff = parseFloat(document.getElementById('efficiency').value) || 0.90;
+      const kw = parseFloat(document.getElementById('motorKw')?.value) || 0;
+      const pf = parseFloat(document.getElementById('powerFactor')?.value) || 0.85;
+      const eff = parseFloat(document.getElementById('efficiency')?.value) || 0.90;
       const voltage = 415;
 
       if (kw <= 0) return;
@@ -20,40 +20,45 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (current > 60) earthSize = "16 mm²";
       else if (current > 30) earthSize = "10 mm²";
 
-      document.getElementById('resCurrent').innerText = `${current.toFixed(1)} A`;
-      document.getElementById('resOlr').innerText = `${current.toFixed(1)} A - ${olrMax.toFixed(1)} A`;
-      document.getElementById('resEarth').innerText = earthSize;
+      const resCurrent = document.getElementById('resCurrent');
+      const resOlr = document.getElementById('resOlr');
+      const resEarth = document.getElementById('resEarth');
+
+      if (resCurrent) resCurrent.innerText = `${current.toFixed(1)} A`;
+      if (resOlr) resOlr.innerText = `${current.toFixed(1)} A - ${olrMax.toFixed(1)} A`;
+      if (resEarth) resEarth.innerText = earthSize;
     });
   }
 
-  // --- 2. Animated Industrial Metrics Counter ---
+  // --- 2. Animated Industrial Metrics Counter (index.html only) ---
   const metricNums = document.querySelectorAll('.metric-num');
+  const metricsSection = document.getElementById('metrics');
   let metricsAnimated = false;
 
-  const animateMetrics = () => {
-    metricNums.forEach(num => {
-      const target = +num.getAttribute('data-target');
-      const duration = 1500;
-      const step = target / (duration / 16);
-      let current = 0;
+  if (metricsSection && metricNums.length > 0) {
+    const animateMetrics = () => {
+      metricNums.forEach(num => {
+        const target = +num.getAttribute('data-target');
+        if (!target) return;
+        const duration = 1500;
+        const step = target / (duration / 16);
+        let current = 0;
 
-      const updateCount = () => {
-        current += step;
-        if (current < target) {
-          num.innerText = Math.ceil(current);
-          requestAnimationFrame(updateCount);
-        } else {
-          num.innerText = target;
-        }
-      };
-      updateCount();
-    });
-  };
+        const updateCount = () => {
+          current += step;
+          if (current < target) {
+            num.innerText = Math.ceil(current);
+            requestAnimationFrame(updateCount);
+          } else {
+            num.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    };
 
-  const metricsSection = document.getElementById('metrics');
-  if (metricsSection) {
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !metricsAnimated) {
+      if (entries[0] && entries[0].isIntersecting && !metricsAnimated) {
         metricsAnimated = true;
         animateMetrics();
       }
@@ -69,13 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.lightbox-trigger').forEach(img => {
     img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxCaption.innerText = img.getAttribute('data-caption') || img.alt;
-      lightboxModal.classList.add('active');
+      if (lightboxImg) lightboxImg.src = img.src;
+      if (lightboxCaption) lightboxCaption.innerText = img.getAttribute('data-caption') || img.alt;
+      if (lightboxModal) lightboxModal.classList.add('active');
     });
   });
 
-  if (lightboxClose) {
+  if (lightboxClose && lightboxModal) {
     lightboxClose.addEventListener('click', () => lightboxModal.classList.remove('active'));
   }
   if (lightboxModal) {
