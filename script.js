@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 1. TOP-LEFT SIDEBAR NAVIGATION TOGGLE
   // ==========================================
-  const navToggle = document.getElementById('navToggle');
+  const navToggle = document.getElementById('drawer-toggle');
   const navMenu = document.getElementById('navMenu');
 
   // Create backdrop overlay for the sidebar drawer if it doesn't exist
