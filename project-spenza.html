@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spenza Attachment Field Experience | Victor Nyaga</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .spenza-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .spenza-header {
+      margin-bottom: 35px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 20px;
+    }
+    .spenza-header h1 {
+      font-size: 2.4rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .spenza-header p {
+      color: #4da6ff;
+      font-size: 1.15rem;
+    }
+    .activity-section-card {
+      background-color: #202020;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 35px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 25px;
+      align-items: center;
+    }
+    @media (max-width: 850px) {
+      .activity-section-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Fixed photo box with proper aspect ratio containment (No over-zooming) */
+    .activity-photo-box {
+      background-color: #0d0d0d;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .activity-photo-box img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain; /* Ensures full image is visible without zooming/cropping */
+      display: block;
+      cursor: pointer;
+      padding: 6px;
+      box-sizing: border-box;
+      transition: transform 0.2s ease;
+    }
+    .activity-photo-box img:hover {
+      transform: scale(1.02);
+    }
+    .photo-caption {
+      font-size: 0.85rem;
+      color: #aaaaaa;
+      text-align: center;
+      padding: 8px 12px;
+      border-top: 1px solid #222;
+      background-color: #141414;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .activity-text-content h3 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 6px;
+    }
+    .activity-text-content ul {
+      list-style-type: square;
+      padding-left: 20px;
+      color: #dddddd;
+    }
+    .activity-text-content li {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">&larr; VICTOR NYAGA PORTFOLIO</a>
+      <a href="index.html" class="btn btn-secondary btn-sm">Return Home</a>
+    </div>
+  </header>
+
+  <main class="spenza-container">
+    <div class="spenza-header">
+      <h1>Industrial Engineering Attachment</h1>
+      <p>Spenza Limited — 150 TPD Grain Processing Plant | Technical Log &amp; Field Photo Records</p>
+    </div>
+
+    <!-- Activity 1: Grounding & Earthing Mesh -->
+    <div class="activity-section-card">
+      <div class="activity-photo-box">
+        <img src="assets/spenza_mesh.jpg" 
+             alt="Copper Earth Mesh Fabrication" 
+             class="lightbox-trigger" 
+             data-caption="Copper Earth Mesh Fabrication & Riveting (Spenza Limited)" 
+             onerror="this.src='assets/clock.jpg'" />
+        <span class="photo-caption">Copper Earth Mesh Fabrication &amp; Riveting</span>
+      </div>
+      <div class="activity-text-content">
+        <h3>1. Industrial Grounding &amp; Earthing Mesh Construction</h3>
+        <ul>
+          <li><strong>Earth Pit Excavation:</strong> Participated in digging 2.5m earth pits and fabricated 1m &times; 1m square copper earth meshes using heavy-duty riveting tools.</li>
+          <li><strong>Soil Conditioning:</strong> Applied structured sodium chloride (salt) and compacted wood charcoal layers to lower earth pit impedance ($R_{earth} < 5\,\Omega$).</li>
+          <li><strong>Equipotential Bonding:</strong> Routed and anchored galvanized aluminum conductors across plant masonry walls to bond 10+ 3-phase induction motors, compressors, and packaging machines to ground.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Activity 2: Switchgear & Control Panel Wiring -->
+    <div class="activity-section-card">
+      <div class="activity-photo-box">
+        <img src="assets/spenza_panel.jpg" 
+             alt="Forward-Reverse Motor Control Panel" 
+             class="lightbox-trigger" 
+             data-caption="Forward-Reverse Interlocked Control Panel Wiring" 
+             onerror="this.src='assets/snake1.jpg'" />
+        <span class="photo-caption">Control Panel Wiring &amp; Switchgear Setup</span>
+      </div>
+      <div class="activity-text-content">
+        <h3>2. Control Room Wiring &amp; Interlocked Circuits</h3>
+        <ul>
+          <li><strong>Logic Interlocking:</strong> Assembled dual-contactor forward-reverse starter circuits with electrical contact interlocking for sheet-metal bending machinery.</li>
+          <li><strong>Component Installation:</strong> Terminated Miniature Circuit Breakers (MCBs), Molded Case Circuit Breakers (MCCBs), thermal overload relays, and phase failure protection modules.</li>
+          <li><strong>Sub-Distribution Setup:</strong> Wired 13A industrial sockets, ceiling switches, and 225W exterior LED floodlights for new plant expansion wings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Activity 3: Motor Diagnostics & Overload Protection -->
+    <div class="activity-section-card">
+      <div class="activity-photo-box">
+        <img src="assets/spenza_motor.jpg" 
+             alt="250 kW Induction Motor Inspection" 
+             class="lightbox-trigger" 
+             data-caption="250 kW Roller Mill Motor Realignment & Shaft Inspection" 
+             onerror="this.src='assets/clock.jpg'" />
+        <span class="photo-caption">250 kW Motor Realignment &amp; Diagnostic Check</span>
+      </div>
+      <div class="activity-text-content">
+        <h3>3. 3-Phase Motor Maintenance &amp; Protection Calibration</h3>
+        <ul>
+          <li><strong>Rating Correction:</strong> Diagnosed thermal tripping on 250 kW roller mill induction motors caused by mismatched drive ratings; unmounted, swapped, and re-aligned motor shafts.</li>
+          <li><strong>Overload Calibration:</strong> Calibrated Direct-On-Line (DOL) thermal overload relays ($I_{FLC} \times 1.10$) to prevent phase failure damage and continuous winding overheating.</li>
+          <li><strong>Mechanical Overhaul:</strong> Conducted bearing greasing, drive belt tensioning, and gearbox oil level checks across bucket elevators and screw conveyors.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Activity 4: Conduit Piping & Overhead Trays -->
+    <div class="activity-section-card">
+      <div class="activity-photo-box">
+        <img src="assets/spenza_conduit.jpg" 
+             alt="PVC Conduit Routing & Cable Trays" 
+             class="lightbox-trigger" 
+             data-caption="PVC Conduit Routing & Multi-Core Overhead Cable Tray Laying" 
+             onerror="this.src='assets/snake1.jpg'" />
+        <span class="photo-caption">PVC Conduit Routing &amp; Cable Containment</span>
+      </div>
+      <div class="activity-text-content">
+        <h3>4. Cable Containment &amp; Overhead Conduit Piping</h3>
+        <ul>
+          <li><strong>Wall Chiseling &amp; Piping:</strong> Executed precise masonry wall chasing and PVC conduit fitting for hidden multi-core supply lines.</li>
+          <li><strong>Overhead Cable Trays:</strong> Installed metal cable tray suspension networks and pulled heavy armored multi-core cables across continuous processing halls.</li>
+          <li><strong>Short-Circuit Analysis:</strong> Evaluated local fault capacity ($I_{sc} \approx 27.5\text{ kA}$) for the facility's 1000 kVA 33kV/420V Dyn11 distribution transformer to verify circuit breaker trip ratings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Return Link -->
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="index.html" class="btn btn-primary" style="font-size: 1.1rem;">&larr; Return to Main Portfolio Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Victor Nyaga. All Rights Reserved. | Spenza Limited Industrial Attachment Log</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-/* Base Styles & Typography */
+/* ==========================================
+   1. BASE STYLES & TYPOGRAPHY
+   ========================================== */
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +30,9 @@ a:hover {
   padding: 0 20px;
 }
 
-/* Header Navigation */
+/* ==========================================
+   2. NAVBAR & TOP-LEFT SIDEBAR NAVIGATION
+   ========================================== */
 .navbar {
   background-color: #121212;
   border-bottom: 1px solid #333333;
@@ -54,23 +58,107 @@ a:hover {
   letter-spacing: 1px;
 }
 
-.nav-menu {
+/* Sidebar Drawer Toggle Button (Top-Left) */
+.nav-toggle {
   display: flex;
-  gap: 22px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid #4da6ff;
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  z-index: 1002;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background-color: #1a2a3a;
+  border-color: #80c0ff;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #4da6ff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger to "X" Animation when active */
+.nav-toggle.active .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Sidebar Drawer Overlay Backdrop */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sidebar Navigation Drawer (Slide-out panel) */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: #121212;
+  border-right: 1px solid #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 80px 0 30px 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.6);
+}
+
+.nav-menu.active {
+  transform: translateX(0);
 }
 
 .nav-menu a {
-  color: #cccccc;
+  padding: 16px 28px;
+  border-bottom: 1px solid #1e1e1e;
+  color: #dddddd;
   font-size: 1.05rem;
   font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
 }
 
 .nav-menu a:hover {
-  color: #ffffff;
+  background-color: #1c222a;
+  color: #4da6ff;
+  padding-left: 34px;
   text-decoration: none;
 }
 
-/* --- FIXED: Hero Section & Background Slideshow --- */
+/* ==========================================
+   3. HERO SECTION & BACKGROUND SLIDESHOW
+   ========================================== */
 .hero-section {
   position: relative;
   min-height: 480px;
@@ -98,7 +186,6 @@ a:hover {
   animation: fadeSlide 21s infinite ease-in-out;
 }
 
-/* Single clean image URLs - no stacking conflict */
 .slide-1 {
   background-image: url('assets/hero1.jpg');
   animation-delay: 0s;
@@ -160,7 +247,9 @@ a:hover {
   gap: 15px;
 }
 
-/* Buttons */
+/* ==========================================
+   4. BUTTONS, SECTIONS & GENERAL CARDS
+   ========================================== */
 .btn {
   display: inline-block;
   padding: 10px 24px;
@@ -200,7 +289,6 @@ a:hover {
   font-size: 0.95rem;
 }
 
-/* Sections & Cards */
 .section {
   padding: 60px 0;
   border-bottom: 1px solid #2a2a2a;
@@ -222,7 +310,53 @@ a:hover {
   padding: 30px;
 }
 
-/* About Grid */
+/* ==========================================
+   5. METRICS COUNTER SECTION
+   ========================================== */
+.metrics-section {
+  background-color: #121212;
+  border-bottom: 1px solid #2e2e2e;
+  padding: 35px 0;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.metric-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  padding: 20px 15px;
+  border-radius: 5px;
+}
+
+.metric-prefix, .metric-unit {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4da6ff;
+}
+
+.metric-num {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   6. ABOUT SECTION
+   ========================================== */
 .about-grid {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -260,7 +394,9 @@ a:hover {
   font-size: 1rem;
 }
 
-/* Spenza Abstract Box */
+/* ==========================================
+    7. INDUSTRIAL EXPERIENCE SECTION
+    ========================================== */
 .abstract-box {
   background-color: #1c222a;
   border-left: 4px solid #4da6ff;
@@ -274,7 +410,36 @@ a:hover {
   color: #d0e0f0;
 }
 
-/* Work Experience Section */
+.skills-acquired-box {
+  margin: 1.25rem 0;
+  padding: 1rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #3b82f6;
+  border-radius: 4px;
+}
+
+.skills-acquired-box h4 {
+  color: #60a5fa;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.skills-bullets {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+  color: #d1d5db;
+}
+
+.skills-bullets li {
+  margin-bottom: 0.4rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.skills-bullets strong {
+  color: #f3f4f6;
+}
+
 .exp-header {
   display: flex;
   justify-content: space-between;
@@ -333,7 +498,9 @@ a:hover {
   font-size: 1.05rem;
 }
 
-/* --- FIXED: Attachment Photo Gallery (Full Uncropped Photos) --- */
+/* ==========================================
+   8. ATTACHMENT PHOTO GALLERY & LIGHTBOX
+   ========================================== */
 .gallery-title {
   font-size: 1.4rem;
   color: #ffffff;
@@ -357,7 +524,6 @@ a:hover {
   flex-direction: column;
 }
 
-/* Uses contain & dark letterboxing to show 100% of the photo without cropping */
 .gallery-card img {
   width: 100%;
   height: 220px;
@@ -374,7 +540,87 @@ a:hover {
   background-color: #161616;
 }
 
-/* Projects Grid */
+.lightbox-trigger {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.lightbox-trigger:hover {
+  transform: scale(1.02);
+  filter: brightness(1.15);
+}
+
+/* Lightbox Modal & Fullscreen Overlay */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-container {
+  max-width: 90vw;
+  max-height: 85vh;
+  text-align: center;
+  position: relative;
+}
+
+.lightbox-container img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border: 2px solid #333333;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-caption {
+  color: #dddddd;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 3001;
+  width: 44px;
+  height: 44px;
+  line-height: 40px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* ==========================================
+   9. PROJECTS SECTION
+   ========================================== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -430,7 +676,68 @@ a:hover {
   border-radius: 3px;
 }
 
-/* Skills Section */
+/* ==========================================
+   10. INTERACTIVE CALCULATOR TOOL
+   ========================================== */
+.calc-card {
+  background-color: #202020;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.calc-input-group label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: #dddddd;
+  font-weight: bold;
+}
+
+.calc-input-group input {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #121212;
+  border: 1px solid #444444;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.calc-output-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.calc-result-box {
+  background-color: #141414;
+  border: 1px solid #333333;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.res-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-bottom: 4px;
+}
+
+.res-val {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #4da6ff;
+}
+
+/* ==========================================
+   11. TECHNICAL SKILLS MATRIX
+   ========================================== */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -455,7 +762,9 @@ a:hover {
   font-size: 1.05rem;
 }
 
-/* Contact Grid */
+/* ==========================================
+   12. CONTACT SECTION
+   ========================================== */
 .contact-intro {
   font-size: 1.15rem;
   margin-bottom: 25px;
@@ -526,267 +835,9 @@ a:hover {
   color: #8f9aa6;
 }
 
-/* Modal & Diagrammatic Formatting */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.88);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 20px;
-}
-
-.modal-overlay.active {
-  display: flex;
-}
-
-.modal-content {
-  background-color: #242424;
-  border: 1px solid #444444;
-  border-radius: 6px;
-  max-width: 720px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 25px 30px;
-  position: relative;
-  color: #e0e0e0;
-}
-
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.modal-video-wrapper {
-  max-width: 480px;
-  width: 100%;
-  margin: 0 auto 20px auto;
-  background-color: #121212;
-  border: 1px solid #383838;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.modal-video {
-  width: 100%;
-  max-height: 270px;
-  object-fit: contain;
-  display: block;
-  background-color: #000;
-}
-
-/* Diagram Visual Box */
-.diagram-box {
-  background-color: #14181f;
-  border: 1px solid #2e3b4e;
-  border-radius: 6px;
-  padding: 18px;
-  margin: 20px 0;
-}
-
-.diagram-title {
-  color: #4da6ff;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.diagram-flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: monospace;
-}
-
-.diagram-node {
-  background-color: #202b38;
-  border: 1px solid #4da6ff;
-  color: #ffffff;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-.diagram-arrow {
-  color: #888888;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.doc-section {
-  margin: 20px 0;
-}
-
-.doc-section h4 {
-  color: #ffffff;
-  font-size: 1.2rem;
-  border-bottom: 1px solid #3a3a3a;
-  padding-bottom: 4px;
-  margin-bottom: 10px;
-}
-
-.doc-section p, .doc-section ul {
-  font-size: 1.05rem;
-  color: #cccccc;
-}
-
-/* Footer */
-.footer {
-  background-color: #121212;
-  border-top: 1px solid #2a2a2a;
-  padding: 25px 0;
-  text-align: center;
-  color: #888888;
-  font-size: 0.95rem;
-}
-
-@media (max-width: 768px) {
-  .nav-container { flex-direction: column; gap: 12px; }
-  .about-grid { grid-template-columns: 1fr; }
-  .exp-grid { grid-template-columns: 1fr; }
-  .exp-header { flex-direction: column; gap: 5px; }
-  .hero-content h1 { font-size: 2.2rem; }
-}
-
-/* FYP Spotlight Styles */
-.fyp-card {
-  border-left: 4px solid #4da6ff;
-  background-color: #1e242d;
-}
-
-.fyp-badge {
-  display: inline-block;
-  background-color: #1a3a5c;
-  color: #4da6ff;
-  border: 1px solid #2d5885;
-  padding: 4px 12px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  border-radius: 3px;
-  margin-bottom: 12px;
-}
-
-.fyp-card h3 {
-  font-size: 1.6rem;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.fyp-desc {
-  font-size: 1.1rem;
-  color: #cccccc;
-  margin-bottom: 25px;
-}
-
-.fyp-architecture {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-}
-
-.arch-step {
-  background-color: #14181f;
-  border: 1px solid #2e3b4e;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-.step-num {
-  display: block;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #4da6ff;
-  margin-bottom: 4px;
-}
-
-.arch-step strong {
-  color: #ffffff;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.arch-step p {
-  font-size: 0.95rem;
-  color: #aaaaaa;
-}
-
-/* Calculator Styles */
-.calc-card {
-  background-color: #202020;
-}
-
-.calc-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.calc-input-group label {
-  display: block;
-  margin-top: 12px;
-  margin-bottom: 4px;
-  color: #dddddd;
-  font-weight: bold;
-}
-
-.calc-input-group input {
-  width: 100%;
-  padding: 8px 12px;
-  background-color: #121212;
-  border: 1px solid #444444;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 1rem;
-  border-radius: 4px;
-}
-
-.calc-output-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15px;
-}
-
-.calc-result-box {
-  background-color: #141414;
-  border: 1px solid #333333;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-.res-label {
-  display: block;
-  font-size: 0.9rem;
-  color: #aaaaaa;
-  margin-bottom: 4px;
-}
-
-.res-val {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #4da6ff;
-}
-
-@media (max-width: 768px) {
-  .calc-grid { grid-template-columns: 1fr; }
-}
-
-/* --- DEDICATED DOCUMENTATION PAGE STYLES --- */
+/* ==========================================
+   13. DOCUMENTATION PAGES & DIAGRAMS
+   ========================================== */
 .doc-body {
   background-color: #141414;
 }
@@ -839,7 +890,6 @@ a:hover {
   max-width: 900px;
 }
 
-/* Two-Column Documentation Grid */
 .doc-grid-main {
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -853,7 +903,6 @@ a:hover {
   gap: 25px;
 }
 
-/* Media Card & Video Container */
 .media-card h3, .diagram-card h3 {
   font-size: 1.3rem;
   color: #ffffff;
@@ -888,7 +937,6 @@ a:hover {
   width: 100%;
 }
 
-/* Vertical Diagram Flow */
 .diagram-flow-vertical {
   display: flex;
   flex-direction: column;
@@ -925,7 +973,6 @@ a:hover {
   font-size: 1.1rem;
 }
 
-/* Documentation Sections */
 .doc-section-card h2 {
   font-size: 1.5rem;
   color: #ffffff;
@@ -951,138 +998,9 @@ a:hover {
   color: #cccccc;
 }
 
-.challenge-box {
-  background-color: #1a1a1a;
-  border-left: 3px solid #4da6ff;
-  border-top: 1px solid #2c2c2c;
-  border-right: 1px solid #2c2c2c;
-  border-bottom: 1px solid #2c2c2c;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 15px;
-}
-
-.challenge-box h4 {
-  color: #ffffff;
-  font-size: 1.15rem;
-  margin-bottom: 8px;
-}
-
-.challenge-box p {
-  font-size: 1rem;
-  color: #bbbbbb;
-  margin-bottom: 6px;
-}
-
-@media (max-width: 900px) {
-  .doc-grid-main {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* --- SUGGESTION 5: METRICS COUNTER STYLES --- */
-.metrics-section {
-  background-color: #121212;
-  border-bottom: 1px solid #2e2e2e;
-  padding: 35px 0;
-}
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  text-align: center;
-}
-
-.metric-card {
-  background-color: #1a1a1a;
-  border: 1px solid #2d2d2d;
-  padding: 20px 15px;
-  border-radius: 5px;
-}
-
-.metric-prefix, .metric-unit {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #4da6ff;
-}
-
-.metric-num {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.metric-label {
-  display: block;
-  font-size: 0.95rem;
-  color: #aaaaaa;
-  margin-top: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-
-/* --- SUGGESTION 4: LIGHTBOX MODAL STYLES --- */
-.lightbox-trigger {
-  cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.lightbox-trigger:hover {
-  transform: scale(1.02);
-  filter: brightness(1.15);
-}
-
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.92);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-  padding: 20px;
-}
-
-.lightbox-overlay.active {
-  display: flex;
-}
-
-.lightbox-container {
-  max-width: 90vw;
-  max-height: 85vh;
-  text-align: center;
-}
-
-.lightbox-container img {
-  max-width: 100%;
-  max-height: 75vh;
-  object-fit: contain;
-  border: 2px solid #333333;
-  border-radius: 4px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.8);
-}
-
-.lightbox-caption {
-  color: #dddddd;
-  font-size: 1.1rem;
-  margin-top: 15px;
-  font-style: italic;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2.5rem;
-  color: #ffffff;
-  cursor: pointer;
-  z-index: 3001;
-}
-
-
-/* --- SUGGESTION 2: CODE PREVIEWER STYLES --- */
+/* ==========================================
+   14. CODE PREVIEWER & FOOTER
+   ========================================== */
 .code-header {
   display: flex;
   justify-content: space-between;
@@ -1115,4 +1033,59 @@ a:hover {
 .copy-btn:hover {
   background-color: #333333;
   border-color: #666666;
+}
+
+.footer {
+  background-color: #121212;
+  border-top: 1px solid #2a2a2a;
+  padding: 25px 0;
+  text-align: center;
+  color: #888888;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   15. RESPONSIVE MEDIA QUERIES
+   ========================================== */
+@media (max-width: 900px) {
+  .doc-grid-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-header {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+  }
 }

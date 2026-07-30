@@ -12,7 +12,12 @@
   <header class="navbar">
     <div class="nav-container">
       <a href="#home" class="brand-logo">VICTOR NYAGA</a>
-      <nav class="nav-menu">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="nav-menu" id="navMenu">
         <a href="#about">About</a>
         <a href="#experience">Industrial Experience</a>
         <a href="#projects">Projects</a>
@@ -39,13 +44,13 @@
         BSc Electrical & Electronics Engineering practitioner with hands-on technical expertise in industrial power distribution, 3-phase motor protection, earthing system design, control panel wiring, and embedded firmware development.
       </p>
       <div class="hero-buttons">
-        <a href="#experience" class="btn btn-primary">View Spenza Experience</a>
+        <a href="project-spenza.html" class="btn btn-primary">View Spenza Experience Page &rarr;</a>
         <a href="#contact" class="btn btn-secondary">Get in Touch</a>
       </div>
     </div>
   </section>
 
-  <!-- SUGGESTION 5: Animated Industrial Metrics Counter Section -->
+  <!-- Industrial Metrics Counter Section -->
   <section id="metrics" class="metrics-section">
     <div class="container metrics-grid">
       <div class="metric-card">
@@ -61,7 +66,7 @@
         <span class="metric-label">Induction Motor Realignment</span>
       </div>
       <div class="metric-card">
-        <span class="metric-prefix">&lt; </span><span class="metric-num" data-target="5">0</span><span class="metric-unit"> Ω</span>
+        <span class="metric-prefix">&lt; </span><span class="metric-num" data-target="5">0</span><span class="metric-unit"> &Omega;</span>
         <span class="metric-label">Earth Pit Target Impedance</span>
       </div>
     </div>
@@ -94,10 +99,10 @@
     </div>
   </section>
 
-  <!-- Industrial Experience Section (Spenza Limited Attachment) -->
+  <!-- Industrial Experience Overview Section -->
   <section id="experience" class="section">
     <div class="container">
-      <h2 class="section-title">Industrial Attachment & Work Experience</h2>
+      <h2 class="section-title">Industrial Work Experience</h2>
       
       <div class="card experience-main-card">
         <div class="exp-header">
@@ -109,71 +114,32 @@
         </div>
         
         <div class="abstract-box">
-          <strong>Executive Abstract:</strong> Completed an intensive 12-week industrial engineering attachment at Spenza Limited, a 150-tonne/day continuous grain processing plant. Hands-on duties encompassed low-resistance grounding infrastructure design, 3-phase motor protection diagnostics, control panel rewiring, and preventive electromechanical servicing in compliance with local electrical safety regulations and ISO 45000:2018 standard operating procedures.
+          <strong>Executive Abstract:</strong> Completed an intensive 12-week industrial engineering attachment at Spenza Limited, a 150-tonne/day continuous grain processing facility. Responsible for low-resistance earthing mesh construction, 3-phase motor protection diagnostics, control panel wiring, and preventive electromechanical maintenance in compliance with ISO 45000:2018 safety standards.
         </div>
 
-        <div class="exp-grid">
-          <div class="exp-box">
-            <h4>1. Grounding & Earthing Systems Design</h4>
-            <ul>
-              <li><strong>Earth Pit Construction:</strong> Excavated 2.5m earth pits and fabricated 1m x 1m square copper earth meshes using precision riveting equipment.</li>
-              <li><strong>Biochemical Conditioning:</strong> Applied layered sodium chloride (salt) and compacted wood charcoal surrounding earthing meshes to maintain low soil resistivity.</li>
-              <li><strong>Equipment Bonding:</strong> Terminated heavy-duty galvanized aluminum flat conductors using wall drills to bond 10+ three-phase induction motors, pumps, packaging units, and compressors to ground.</li>
-            </ul>
-          </div>
-
-          <div class="exp-box">
-            <h4>2. Control Room & Electrical Wiring</h4>
-            <ul>
-              <li><strong>Conduit & Tray Installation:</strong> Executed masonry wall chiseling, PVC conduit routing, and multi-core power cable laying across overhead metal cable trays to supply new control rooms.</li>
-              <li><strong>Power & Lighting Distribution:</strong> Wired and terminated 13A socket outlets, two-way lighting switches, ceiling roses, consumer units, and 225W exterior security floodlights.</li>
-            </ul>
-          </div>
-
-          <div class="exp-box">
-            <h4>3. Motor Maintenance & Control Diagnostics</h4>
-            <ul>
-              <li><strong>Motor Rating Mismatch Correction:</strong> Diagnosed severe thermal overload on 250 kW roller mill induction motors caused by installation mismatches; dismounted, interchanged, and realigned drive shafts.</li>
-              <li><strong>Interlocked Logic Circuits:</strong> Designed and installed dual-contactor forward-reverse control circuits with electrical interlocking for maintenance metal bending machinery.</li>
-              <li><strong>Protection Relays:</strong> Replaced degraded phase contactors and calibrated Direct-On-Line (DOL) thermal overload relays (OLR) to eliminate single-phasing conditions.</li>
-            </ul>
-          </div>
-
-          <div class="exp-box">
-            <h4>4. Power Systems & Electromechanical Diagnostics</h4>
-            <ul>
-              <li><strong>Conveyance Maintenance:</strong> Conducted belt tensioning, drive belt replacements, gearbox oil inspections, and bearing greasing on bucket elevators, screw conveyors, and extruders.</li>
-              <li><strong>Short-Circuit Analysis:</strong> Modeled short-circuit fault capacity ($I_{sc} \approx 27.5\text{ kA}$) for the facility's 1000 kVA, 33kV/420V Dyn11 YOCEAN transformer to verify switchgear breaking thresholds.</li>
-            </ul>
-          </div>
+        <!-- Skills Learned During Attachment -->
+        <div class="skills-acquired-box">
+          <h4><i class="fas fa-tools"></i> Core Skills Learned &amp; Technical Competencies</h4>
+          <ul class="skills-bullets">
+            <li><strong>Earthing &amp; Grounding Systems:</strong> Ground resistance testing, earthing mesh installation, and earth rod bonding for industrial safety.</li>
+            <li><strong>Motor Diagnostics &amp; Control:</strong> Star-Delta starter assembly, thermal overload relay setting, and 3-phase motor insulation resistance (Megger) testing.</li>
+            <li><strong>Switchgear &amp; Panel Wiring:</strong> Panel layout, cable containment, trunking, glanding, and breaker isolation.</li>
+            <li><strong>Occupational Safety:</strong> Application of Lockout/Tagout (LOTO) procedures and compliance with ISO 45000:2018 factory standards.</li>
+          </ul>
         </div>
 
-        <!-- SUGGESTION 4: Attachment Photo Gallery with Lightbox Triggering -->
-        <h4 class="gallery-title">Field Work Photo Gallery (Click photo for full view)</h4>
-        <div class="spenza-gallery">
-          <div class="gallery-card">
-            <img src="assets/spenza_mesh.jpg" alt="Earthing Mesh Installation" class="lightbox-trigger" data-caption="Copper Earth Mesh Fabrication & Riveting (Spenza Limited)" onerror="this.src='assets/clock.jpg'" />
-            <span class="gallery-caption">Copper Earth Mesh Fabrication & Riveting</span>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/spenza_panel.jpg" alt="Motor Control Panel Rewiring" class="lightbox-trigger" data-caption="Forward-Reverse Interlocked Motor Control Panel Wiring" onerror="this.src='assets/snake1.jpg'" />
-            <span class="gallery-caption">Forward-Reverse Motor Control Panel Wiring</span>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/spenza_motor.jpg" alt="Induction Motor Maintenance" class="lightbox-trigger" data-caption="250 kW Roller Mill Motor Realignment & Shaft Inspection" onerror="this.src='assets/clock.jpg'" />
-            <span class="gallery-caption">250 kW Roller Mill Motor Realignment</span>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/spenza_conduit.jpg" alt="Overhead Cable Tray Management" class="lightbox-trigger" data-caption="PVC Conduit Routing & Multi-Core Overhead Cable Tray Laying" onerror="this.src='assets/snake1.jpg'" />
-            <span class="gallery-caption">PVC Conduit Routing & Cable Tray Laying</span>
-          </div>
-        </div>
+        <p style="margin-bottom: 20px; color: #cccccc; font-size: 1.05rem;">
+          To view the complete field activity breakdown alongside high-resolution photos for each technical task, visit the dedicated subpage below:
+        </p>
 
+        <a href="project-spenza.html" class="btn btn-primary" style="font-size: 1.05rem;">
+          Explore Complete Spenza Attachment Log &amp; Activity Photos &rarr;
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Technical Projects -->
+  <!-- Technical Projects Section -->
   <section id="projects" class="section">
     <div class="container">
       <h2 class="section-title">Technical Projects</h2>
@@ -191,7 +157,7 @@
               <span>LCD Interface</span>
               <span>Embedded C</span>
             </div>
-            <a href="project-clock.html" class="btn btn-secondary btn-sm">View Technical Documentation ↗</a>
+            <a href="project-clock.html" class="btn btn-secondary btn-sm">View Technical Documentation &rarr;</a>
           </div>
         </div>
 
@@ -207,18 +173,18 @@
               <span>Signal Processing</span>
               <span>Embedded C</span>
             </div>
-            <a href="project-snake.html" class="btn btn-secondary btn-sm">View Technical Documentation ↗</a>
+            <a href="project-snake.html" class="btn btn-secondary btn-sm">View Technical Documentation &rarr;</a>
           </div>
         </div>
 
-      </div>
+        </div>
     </div>
   </section>
 
-  <!-- SUGGESTION 1: Interactive Engineering Calculator Tool -->
+  <!-- Interactive Calculator Section -->
   <section id="calculator" class="section">
     <div class="container">
-      <h2 class="section-title">Interactive Tool: 3-Phase Motor & Cable Sizer</h2>
+      <h2 class="section-title">Interactive Tool: 3-Phase Motor &amp; Cable Sizer</h2>
       <div class="card calc-card">
         <p style="margin-bottom: 20px; color: #bbbbbb;">
           Quick industrial tool for estimating 415V 3-phase induction motor full-load current ($I_{FLC}$) and minimum copper grounding conductor size according to standard electrical engineering practices.
@@ -248,7 +214,7 @@
             </div>
             <div class="calc-result-box">
               <span class="res-label">Min. Recommended Earth Bonding Copper Wire:</span>
-              <span id="resEarth" class="res-val">16 mm²</span>
+              <span id="resEarth" class="res-val">16 mm&sup2;</span>
             </div>
           </div>
         </div>
@@ -256,45 +222,45 @@
     </div>
   </section>
 
-  <!-- Skills Matrix -->
+  <!-- Technical Skills Matrix -->
   <section id="skills" class="section">
     <div class="container">
       <h2 class="section-title">Technical Skills Matrix</h2>
       <div class="skills-grid">
         <div class="card skill-category">
-          <h3>Industrial Electrical & Power Systems</h3>
+          <h3>Industrial Electrical &amp; Power Systems</h3>
           <ul class="skill-list">
             <li>Low-Resistance Industrial Earthing Systems</li>
-            <li>Earth Mesh Construction & Soil Conditioning</li>
-            <li>3-Phase Induction Motor Diagnostics & Realignment</li>
-            <li>DOL & Forward-Reverse Interlocked Starter Wiring</li>
-            <li>Cable Tray Management & Masonry Conduit Piping</li>
-            <li>Distribution Transformer & Short-Circuit Analysis</li>
-            <li>Consumer Units & Industrial Lighting Distribution</li>
+            <li>Earth Mesh Construction &amp; Soil Conditioning</li>
+            <li>3-Phase Induction Motor Diagnostics &amp; Realignment</li>
+            <li>DOL &amp; Forward-Reverse Interlocked Starter Wiring</li>
+            <li>Cable Tray Management &amp; Masonry Conduit Piping</li>
+            <li>Distribution Transformer &amp; Short-Circuit Analysis</li>
+            <li>Consumer Units &amp; Industrial Lighting Distribution</li>
           </ul>
         </div>
 
         <div class="card skill-category">
-          <h3>Embedded Systems & Hardware</h3>
+          <h3>Embedded Systems &amp; Hardware</h3>
           <ul class="skill-list">
-            <li>Arduino, ESP32, STM32 & Microcontrollers</li>
-            <li>PCB Layout Design & Circuit Simulation (Proteus)</li>
-            <li>Digital Logic & Relay Interlocking Circuits</li>
+            <li>Arduino, ESP32, STM32 &amp; Microcontrollers</li>
+            <li>PCB Layout Design &amp; Circuit Simulation (Proteus)</li>
+            <li>Digital Logic &amp; Relay Interlocking Circuits</li>
             <li>Sensor Diagnostics (Proximity, Temp/Moisture Probes)</li>
-            <li>Hardware Troubleshooting & Multimeter Diagnostics</li>
+            <li>Hardware Troubleshooting &amp; Multimeter Diagnostics</li>
             <li>Firmware Development in C and Python</li>
           </ul>
         </div>
 
         <div class="card skill-category">
-          <h3>Software, Diagnostics & Safety</h3>
+          <h3>Software, Diagnostics &amp; Safety</h3>
           <ul class="skill-list">
             <li>AutoCAD Electrical Drafting</li>
-            <li>Python Scripting & Data Logging</li>
-            <li>Pneumatic & Conveyor Belt System Servicing</li>
-            <li>High-Speed Bearing Greasing & Gearbox Servicing</li>
-            <li>ISO 45000:2018 Safety Standards & HSE Compliance</li>
-            <li>Technical Logging & Report Generation</li>
+            <li>Python Scripting &amp; Data Logging</li>
+            <li>Pneumatic &amp; Conveyor Belt System Servicing</li>
+            <li>High-Speed Bearing Greasing &amp; Gearbox Servicing</li>
+            <li>ISO 45000:2018 Safety Standards &amp; HSE Compliance</li>
+            <li>Technical Logging &amp; Report Generation</li>
           </ul>
         </div>
       </div>
@@ -304,48 +270,54 @@
   <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
-      <h2 class="section-title">Contact & Professional Links</h2>
+      <h2 class="section-title">Contact &amp; Professional Links</h2>
       <div class="card contact-card">
         <p class="contact-intro">Open for industrial engineering roles, embedded systems development, and technical consultations.</p>
         <div class="contact-grid">
           <a href="tel:0708797271" class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.2 11.2 0 0 0 3.5.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h2.8a1 1 0 0 1 1 1 11.2 11.2 0 0 0 .6 3.5 1 1 0 0 1-.2 1z"/></svg>
+            </span>
             <span class="contact-label">Phone</span>
-            <span class="contact-val">0708797271</span>
+            <span class="contact-hint">Call</span>
           </a>
           <a href="mailto:vnyaga03@gmail.com" class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
             <span class="contact-label">Email</span>
-            <span class="contact-val">vnyaga03@gmail.com</span>
+            <span class="contact-hint">Write</span>
           </a>
           <a href="https://www.linkedin.com/in/victor-nyaga-3a15a8352" target="_blank" class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.94 8.5A1.56 1.56 0 1 0 6.94 5.4a1.56 1.56 0 0 0 0 3.1z"/><path d="M5.5 9.5h2.88v8H5.5z"/><path d="M10.7 9.5h2.76v1.1h.04c.38-.72 1.31-1.48 2.7-1.48 2.88 0 3.41 1.89 3.41 4.35v4.99H16.9v-4.66c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.74H10.7z"/></svg>
+            </span>
             <span class="contact-label">LinkedIn</span>
-            <span class="contact-val">Victor Nyaga Profile</span>
+            <span class="contact-hint">Connect</span>
           </a>
           <a href="https://wa.me/254732930207" target="_blank" class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 21l1.4-5.1A9 9 0 1 1 8.1 20z"/><path d="M9.2 8.6c.2-.3.4-.4.8-.4h.3c.2 0 .4.1.6.3.2.2.7.7.8 1.4.1.5 0 1-.2 1.2l-.1.2c-.2.3-.3.5-.1.8.2.3.8 1.3 1.7 2.2 1 .9 1.9 1.5 2.2 1.7.3.2.5.2.8-.1l.2-.2c.2-.2.5-.3.8-.2.7.1 1.2.5 1.4.8.2.3.2.6.1.8l-.4.9c-.2.4-.6.7-1 .7a11.6 11.6 0 0 1-5.8-2.4A11.6 11.6 0 0 1 4.5 9.4c0-.4.3-.8.7-1l.8-.3c.3-.1.6 0 .8.2z"/></svg>
+            </span>
             <span class="contact-label">WhatsApp</span>
-            <span class="contact-val">+254 732 930 207</span>
+            <span class="contact-hint">Message</span>
           </a>
           <a href="https://www.tiktok.com/@its_nyaga" target="_blank" class="contact-item">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14 3h2a4 4 0 0 0 4 4v2a4 4 0 0 1-4-4h-2z"/><path d="M14 7v8.2a3.2 3.2 0 1 1-2.2-3.1V10a5.3 5.3 0 0 0 2.2.5z"/></svg>
+            </span>
             <span class="contact-label">TikTok</span>
-            <span class="contact-val">@its_nyaga</span>
+            <span class="contact-hint">Follow</span>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SUGGESTION 4: Photo Lightbox Modal Structure -->
-  <div id="lightboxModal" class="lightbox-overlay">
-    <span class="lightbox-close">&times;</span>
-    <div class="lightbox-container">
-      <img id="lightboxImg" src="" alt="Full Resolution View" />
-      <p id="lightboxCaption" class="lightbox-caption"></p>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 Victor Nyaga. All Rights Reserved. | BSc Electrical & Electronics Engineering Portfolio</p>
+      <p>&copy; 2026 Victor Nyaga. All Rights Reserved. | BSc Electrical &amp; Electronics Engineering Portfolio</p>
     </div>
   </footer>
 
