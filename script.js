@@ -226,3 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+// ==========================================
+// PRELOADER / INTRO SCREEN CONTROLLER
+// ==========================================
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('hide-preloader');
+    }, 1500);
+  }
+});
