@@ -34,10 +34,11 @@ a:hover {
    2. NAVBAR & TOP-LEFT SIDEBAR NAVIGATION
    ========================================== */
 .navbar {
-  background-color: #121212;
-  border-bottom: 1px solid #333333;
-  position: sticky;
+  /* Removed solid background-color */
+  /* border-bottom: 1px solid #333333; */ /* Optionally remove or comment out this border */
+  position: absolute; /* Changed from sticky to overlay */
   top: 0;
+  inset-inline: 0; /* Ensures full width */
   z-index: 1000;
   padding: 16px 0;
 }
@@ -52,10 +53,12 @@ a:hover {
 }
 
 .top-nav {
-  background-color: #121212;
-  border-bottom: 1px solid #333333;
-  position: sticky;
+  /* background-color: #121212; */ /* Removed solid background-color */
+  background-color: transparent; /* Makes the header transparent */
+  border-bottom: none; /* Removes the border so it blends better */
+  position: absolute; /* Changed from sticky to overlay */
   top: 0;
+  inset-inline: 0; /* Ensures full width */
   z-index: 1000;
   padding: 16px 20px;
 }
@@ -207,13 +210,13 @@ a:hover {
    ========================================== */
 .hero-section {
   position: relative;
-  min-height: 480px;
+  min-height: 620px; /* Increased from 480px to expand vertical space and "zoom out" the framing */
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #333333;
   overflow: hidden;
-  padding: 80px 0;
+  padding: 80px 0 60px 0;
   text-align: center;
 }
 
@@ -227,7 +230,7 @@ a:hover {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 20%; /* Perfectly balances focal point between helmet and body */
   opacity: 0;
   animation: fadeSlide 21s infinite ease-in-out;
 }
@@ -245,6 +248,14 @@ a:hover {
 .slide-3 {
   background-image: url('assets/hero3.jpg');
   animation-delay: 14s;
+}
+
+/* ==========================================
+   SLIDE 3 SPECIFIC FOCAL BALANCE
+   ========================================== */
+.slide-3 {
+  /* Positions the image vertically at 50% center to balance top cables and bottom capacitors */
+  background-position: center 50% !important;
 }
 
 @keyframes fadeSlide {
